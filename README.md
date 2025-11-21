@@ -1,32 +1,89 @@
-# Online Banking System (Maven WAR)
+# Online Banking System (JSP + Servlets + MySQL)
 
-## Overview
-Minimal Java web application (JSP + Servlets + JDBC + MySQL) for demo/learning purposes.
-Features:
-- User registration (admin approval required)
-- Login / Logout
-- Account overview
-- Fund transfer (between accounts)
-- Transaction history
-- Admin panel for approving accounts
+## Introduction
 
-## Prerequisites
-- Java 8+
-- Maven
-- Tomcat 9
-- MySQL (database `bank_db`)
-- Set MySQL credentials in `src/main/java/com/bank/util/DBConnection.java` if different.
+This is a simple online banking web application built using Java Servlets, JSP, JDBC, and MySQL.
+It is designed as a learning project to understand how a real-world banking system works, including login, account management, fund transfers, and admin approval.
 
-## Setup
-1. Import project into VS Code or IDE as a Maven project.
-2. Run SQL in `db/schema.sql` to create database and tables.
-3. Build:
+## What the Project Can Do
+
+* Register a new user (account stays inactive until admin approves)
+* Login and logout
+* View account details and current balance
+* Transfer money to another user’s account
+* View transaction history
+* Admin dashboard to approve newly registered users
+
+## What You Need Installed
+
+Before running the project, make sure you have:
+
+* Java 8 or higher
+* Apache Tomcat 9
+* MySQL server
+* Maven
+* Any IDE like VS Code, IntelliJ, or Eclipse
+
+## Database Setup
+
+1. Open MySQL and create the database by running the SQL file located in:
+
+```
+db/schema.sql
+```
+
+2. Default MySQL settings used in this project:
+
+* Database: `bank_db`
+* Username: `root`
+* Password: `root`
+
+If your MySQL settings are different, update them here:
+
+```
+src/main/java/com/bank/util/DBConnection.java
+```
+
+## How to Run the Project
+
+1. Open the project in your IDE as a Maven project.
+2. Build the application:
+
 ```
 mvn clean package
 ```
-4. Deploy `target/online-banking.war` to Tomcat `webapps` or run with `mvn tomcat7:deploy` (configure plugin).
-5. Open `http://localhost:8080/online-banking/`
 
-## Notes
-- Passwords are stored in plaintext in this demo. For production, hash passwords (BCrypt).
-- Add input validation and CSRF protections for real applications.
+3. After the build completes, a `.war` file will be generated in:
+
+```
+target/online-banking.war
+```
+
+4. Deploy the WAR file to Tomcat’s `webapps` folder.
+5. Start Tomcat and open your browser:
+
+```
+http://localhost:8080/online-banking/
+```
+
+## Default Admin Login
+
+* Email: `admin@bank.com`
+* Password: `admin123`
+
+## Important Notes
+
+* Passwords are stored as plain text for learning purposes only.
+  In real applications, always hash passwords (e.g., BCrypt).
+* Add input validation and security checks such as CSRF protection for production systems.
+
+## Purpose of the Project
+
+This project is mainly meant for:
+
+* Students
+* Beginners in full-stack Java
+* Learning JDBC and database integration
+* Understanding web development using JSP and Servlets
+
+Feel free to customize, extend, and improve the system as needed.
